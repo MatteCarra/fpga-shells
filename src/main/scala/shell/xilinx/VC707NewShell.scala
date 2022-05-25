@@ -18,7 +18,7 @@ class SysClockVC707PlacedOverlay(val shell: VC707Shell, name: String, val design
   extends LVDSClockInputXilinxPlacedOverlay(name, designInput, shellInput)
 {
   val node = shell { ClockSourceNode(freqMHz = 200, jitterPS = 50)(ValName(name)) }
-
+  //questo è ok
   shell { InModuleBody {
     shell.xdc.addBoardPin(io.p, "clk_p")
     shell.xdc.addBoardPin(io.n, "clk_n")
@@ -33,6 +33,7 @@ class SDIOVC707PlacedOverlay(val shell: VC707Shell, name: String, val designInpu
   extends SDIOXilinxPlacedOverlay(name, designInput, shellInput)
 {
   shell { InModuleBody {
+    //questo è ok
     val packagePinsWithPackageIOs = Seq(("AN30", IOPin(io.spi_clk)),
                                         ("AP30", IOPin(io.spi_cs)),
                                         ("AR30", IOPin(io.spi_dat(0))),
@@ -59,6 +60,7 @@ class UARTVC707PlacedOverlay(val shell: VC707Shell, name: String, val designInpu
   extends UARTXilinxPlacedOverlay(name, designInput, shellInput, true)
 {
   shell { InModuleBody {
+    //sembra essere ok su vivado, anche se gli schematics dicono l'opposto
     val packagePinsWithPackageIOs = Seq(("AT32", IOPin(io.ctsn.get)),
                                         ("AR34", IOPin(io.rtsn.get)),
                                         ("AU33", IOPin(io.rxd)),

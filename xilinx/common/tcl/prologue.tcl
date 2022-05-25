@@ -4,6 +4,8 @@
 # http://wiki.tcl.tk/1730
 set ip_vivado_tcls {}
 
+set_param board.repoPaths [list "/home/users/oscar.celis/Workspace/vivado-boards-master/new/board_files"]
+
 while {[llength $argv]} {
   set argv [lassign $argv[set argv {}] flag]
   switch -glob $flag {
