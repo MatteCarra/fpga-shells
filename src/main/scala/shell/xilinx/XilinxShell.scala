@@ -28,12 +28,19 @@ class XDC(val name: String)
     addConstraint(s"set_property PULLUP {TRUE} ${io.sdcPin}")
   }
   def addIOB(io: IOPin) {
-    /*if (io.isOutput) {
+    //ERROR: [Common 17-679] Invalid object type, 'port', used with '-of_objects' switch. Supported types are: 'net, pblock, pin, timing path, constant path, bel, site, slr'.
+    //GND VCC a2b a2b_1 a2b_2 a2b_3 a2b_4 bundleIn_0_dq_1_i_REG_1_reg bundleIn_0_dq_1_i_REG_reg bundleIn_0_rxd_a2b bundleOut_0_reset_i chiptop
+    // dutGroup
+    //dutGroup_auto_in_member_0_reset_i dutWrangler dutWrangler_auto_in_1_reset_i fpga_power_on harnessSysPLL mig mig_io_port_aresetn_i
+    // plusarg_reader
+    // resetIBUF sys_clock_ibufds
+    if (io.isOutput) {
        addConstraint(s"set_property IOB {TRUE} [ get_cells -of_objects [ all_fanin -flat -startpoints_only ${io.sdcPin}]]")
      } else {
        addConstraint(s"set_property IOB {TRUE} [ get_cells -of_objects [ all_fanout -flat -endpoints_only ${io.sdcPin}]]")
-    }*/
-    addConstraint(s"set_property IOB {TRUE} ${io.sdcPin}")
+    }
+
+    //addConstraint(s"set_property IOB {TRUE} ${io.sdcPin}")
   }
   def addSlew(io: IOPin, speed: String) {
     addConstraint(s"set_property SLEW {${speed}} ${io.sdcPin}")

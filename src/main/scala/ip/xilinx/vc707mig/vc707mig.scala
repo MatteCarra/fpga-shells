@@ -305,7 +305,7 @@ class vc707mig(depth : BigInt)(implicit val p:Parameters) extends BlackBox
       <C0_C_RD_WR_ARB_ALGORITHM>RD_PRI_REG</C0_C_RD_WR_ARB_ALGORITHM>
       <C0_S_AXI_ADDR_WIDTH>30</C0_S_AXI_ADDR_WIDTH>
       <C0_S_AXI_DATA_WIDTH>64</C0_S_AXI_DATA_WIDTH>
-      <C0_S_AXI_ID_WIDTH>1</C0_S_AXI_ID_WIDTH>
+      <C0_S_AXI_ID_WIDTH>4</C0_S_AXI_ID_WIDTH>
       <C0_S_AXI_SUPPORTS_NARROW_BURST>0</C0_S_AXI_SUPPORTS_NARROW_BURST>
     </AXIParameters>
   </Controller>
@@ -531,6 +531,6 @@ class vc707mig(depth : BigInt)(implicit val p:Parameters) extends BlackBox
    set_property CONFIG.XML_INPUT_FILE $migprjfilepath [get_ips """ ++ modulename ++ """] """
   )
 
-   
+
 }
 //scalastyle:on
